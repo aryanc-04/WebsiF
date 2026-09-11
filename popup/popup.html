@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Word Filter</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  
+    <main class="panel">
+        <h1>Word Filter</h1>
+        <p class="subtitle">
+          Choose a method and run filtering on the current page.
+        </p>
+
+        <div class="control">
+            <label for="method">Filter method</label>
+            <select id="method" name="method">
+                <option value="regex">regex</option>
+                <option value="trie">trie</option>
+            </select>
+        </div>
+
+        <button id="filterButton" type="button">Filter current page</button>
+
+        <div class="actions">
+            <button id="pinButton" type="button" class="secondary">Pin</button>
+            <button id="reloadButton" type="button" class="secondary">Reload</button>
+        </div>
+
+        <button id="blocklistButton" type="button" class="secondary full">
+            Manage blocklist
+        </button>
+
+        <p id="status" class="status">ready</p>
+
+        <section class="metrics" aria-live="polite">
+            <h2>performance</h2>
+            <table>
+                <tbody>
+                    <tr><th>Engine time</th><td id="metricEngineOnly">-</td></tr>
+                    <tr><th>Flagged words</th><td id="metricMatches">-</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+  <script src="popup.js"></script>
+</body>
+</html>

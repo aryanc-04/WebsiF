@@ -1,0 +1,69 @@
+{
+  "manifest_version": 3,
+  "name": "websif",
+  "version": "3",
+  "description": "custom filter based text content guard",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "sidePanel",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "websif",
+    "default_popup": "popup/popup.html"
+  },
+  "side_panel": {
+    "default_path": "popup/popup.html"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "scripts": [
+      "src/utils/textBoundary.js",
+      "src/utils/mask.js",
+      "src/blocklist/loadBlocklist.js",
+      "src/blocklist/customBlocklist.js",
+      "src/engines/normalizer.js",
+      "src/engines/regexEngine.js",
+      "src/engines/trieEngine.js",
+      "background.js"
+    ],
+    "service_worker": "scripts.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/blocklist.txt"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "websif-word-filter@example.local"
+    }
+  }
+}

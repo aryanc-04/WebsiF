@@ -1,0 +1,10 @@
+importScripts(
+    "src/utils/textBoundary.js",
+    "src/utils/mask.js",
+    "src/blocklist/loadBlocklist.js",
+    "src/blocklist/customBlocklist.js",
+    "src/engines/normalizer.js",
+    "src/engines/regexEngine.js",
+    "src/engines/trieEngine.js",
+    "background.js"
+);
